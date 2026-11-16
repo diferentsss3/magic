@@ -1,10 +1,10 @@
 # Настройки редактора сайта (страница /admin/).
-# ВАЖНО: замените OWNER/REPO на адрес вашего репозитория на GitHub,
-# например: ivan-petrov/magic-sushi
+# Адрес репозитория на GitHub: имя-аккаунта/имя-репозитория.
+# Ветка в строке branch должна совпадать с веткой, из которой публикуется сайт.
 
 backend:
   name: github
-  repo: OWNER/REPO
+  repo: diferentsss3/magic
   branch: main
 
 media_folder: assets/photos
