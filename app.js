@@ -66,7 +66,25 @@
   function fillSite(site) {
     document.querySelectorAll("[data-site]").forEach(function (el) {
       var value = site[el.getAttribute("data-site")];
-      if (value) el.textContent = value;
+      var box = el.closest("[data-hide-empty]");
+      if (!value) {
+        // Пустое поле: блок с ним не показываем, пока его не заполнят
+        if (box) box.hidden = true;
+        return;
+      }
+      if (/^https?:\/\//i.test(value)) {
+        var host = "";
+        try { host = new URL(value).hostname.replace(/^www\./, ""); } catch (e) { host = value; }
+        var link = document.createElement("a");
+        link.href = value;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = /(^|\.)vk\.(com|ru)$/.test(host) ? "ВКонтакте" : host;
+        el.textContent = "";
+        el.appendChild(link);
+      } else {
+        el.textContent = value;
+      }
     });
     var digits = String(site.phone || "").replace(/[^\d+]/g, "");
     document.querySelectorAll("[data-phone]").forEach(function (el) {
@@ -99,7 +117,7 @@
       '<div class="card__body">' +
       '<div class="card__row">' +
       '<h3 class="card__name">' + esc(item.name) + "</h3>" +
-      '<span class="card__price">' + money(item.price) + "</span>" +
+      '<span class="card__price">' + (item.priceFrom ? "от " : "") + money(item.price) + "</span>" +
       "</div>" +
       '<p class="card__desc">' + esc(meta) + "</p>" +
       "</div>" +

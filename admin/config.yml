@@ -25,7 +25,7 @@ collections:
           - { label: Часы работы, name: hours, widget: string, required: false, hint: "Например: Ежедневно 10:00–23:00" }
           - { label: Доставка, name: delivery, widget: string, required: false, hint: "Например: Бесплатно от 1 500 ₽" }
           - { label: Минимальный заказ, name: minOrder, widget: string, required: false, hint: "Например: 800 ₽" }
-          - { label: Соцсети, name: social, widget: string, required: false, hint: "Например: Telegram: @magic_sushi" }
+          - { label: Соцсети, name: social, widget: string, required: false, hint: "Ссылка на группу ВКонтакте или другую соцсеть, например: https://vk.com/название" }
 
   - name: menu
     label: Меню
@@ -57,4 +57,5 @@ collections:
                   - { label: Состав, name: desc, widget: string, required: false }
                   - { label: Вес или объём, name: weight, widget: string, required: false, hint: "Например: 230 г" }
                   - { label: Цена в рублях, name: price, widget: number, value_type: int, min: 0 }
+                  - { label: Показывать «от» перед ценой, name: priceFrom, widget: boolean, default: false, required: false, hint: "Включите, если у блюда несколько размеров и цена указана для самого маленького." }
                   - { label: Фото, name: photo, widget: image, required: false, hint: "Горизонтальное фото, лучше до 2 МБ. Без фото показывается цветная заглушка." }
