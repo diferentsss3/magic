@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Magic — дзен японской кухни</title>
+<meta name="description" content="Меню и доставка японской кухни Magic: роллы, сеты, суши, горячее и напитки.">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Marck+Script&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header__inner">
+    <a class="brand" href="#top" aria-label="Magic, на главную">
+      <img class="brand__logo" src="assets/logo.png" alt="" width="52" height="52">
+      <span class="brand__name">Magic</span>
+    </a>
+    <nav class="nav" aria-label="Разделы сайта">
+      <a href="#menu">Меню</a>
+      <a href="#info">Доставка</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a class="header__phone" data-phone-link href="#contacts"><span data-phone>[ТЕЛЕФОН]</span></a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <span class="eyebrow">Японская кухня с доставкой</span>
+      <h1 class="hero__title">Дзен японской кухни</h1>
+      <p class="hero__lead">Роллы, сеты, суши и горячее. Выберите блюда в меню и позвоните нам, мы примем заказ и привезём его.</p>
+      <div class="hero__actions">
+        <a class="btn" href="#menu">Смотреть меню</a>
+        <span class="hero__phone">
+          <span class="hero__phone-label">Заказ по телефону</span>
+          <a class="hero__phone-num" data-phone-link href="#contacts"><span data-phone>[ТЕЛЕФОН]</span></a>
+        </span>
+      </div>
+    </div>
+    <img class="hero__logo" src="assets/logo.png" alt="Логотип Magic: красная пиала с лапшой и надпись «Дзен японской кухни»" width="420" height="418">
+  </div>
+</section>
+
+<section class="info" id="info" aria-label="Условия заказа">
+  <div class="info__inner">
+    <div class="info__item">
+      <span class="info__label">Доставка</span>
+      <span class="info__value" data-site="delivery">[ЗОНЫ И СТОИМОСТЬ]</span>
+    </div>
+    <div class="info__item">
+      <span class="info__label">Минимальный заказ</span>
+      <span class="info__value" data-site="minOrder">[СУММА]</span>
+    </div>
+    <div class="info__item">
+      <span class="info__label">Часы работы</span>
+      <span class="info__value" data-site="hours">[ЧАСЫ РАБОТЫ]</span>
+    </div>
+  </div>
+</section>
+
+<main class="menu" id="menu">
+  <div class="menu__inner">
+    <div class="menu__head">
+      <h2 class="menu__title">Меню</h2>
+      <nav class="pills" id="pills" aria-label="Категории меню"></nav>
+    </div>
+    <div id="menu-root"></div>
+  </div>
+</main>
+
+<footer class="footer" id="contacts">
+  <div class="footer__inner">
+    <div class="footer__col footer__brand">
+      <img class="footer__logo" src="assets/logo.png" alt="Magic" width="72" height="72">
+      <span class="footer__name">Magic</span>
+      <span class="footer__sub">Дзен японской кухни</span>
+    </div>
+    <div class="footer__col">
+      <span class="footer__label">Телефон</span>
+      <a class="footer__phone" data-phone-link href="#contacts"><span data-phone>[ТЕЛЕФОН]</span></a>
+      <span class="footer__text" data-site="hours">[ЧАСЫ РАБОТЫ]</span>
+    </div>
+    <div class="footer__col">
+      <span class="footer__label">Адрес</span>
+      <span class="footer__text" data-site="address">[АДРЕС]</span>
+    </div>
+    <div class="footer__col">
+      <span class="footer__label">Соцсети</span>
+      <span class="footer__text" data-site="social">[ССЫЛКИ НА СОЦСЕТИ]</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+# Настройки редактора сайта (страница /admin/).
+# ВАЖНО: замените OWNER/REPO на адрес вашего репозитория на GitHub,
+# например: ivan-petrov/magic-sushi
+
+backend:
+  name: github
+  repo: OWNER/REPO
+  branch: main
+
+media_folder: assets/photos
+public_folder: assets/photos
+
+locale: ru
+
+collections:
+  - name: settings
+    label: Контакты и условия
+    files:
+      - name: site
+        label: Телефон, адрес, часы работы, доставка
+        file: data/site.json
+        fields:
+          - { label: Телефон, name: phone, widget: string, required: false, hint: "Например: +7 (900) 000-00-00. По нему на телефоне можно сразу позвонить." }
+          - { label: Адрес, name: address, widget: string, required: false }
+          - { label: Часы работы, name: hours, widget: string, required: false, hint: "Например: Ежедневно 10:00–23:00" }
+          - { label: Доставка, name: delivery, widget: string, required: false, hint: "Например: Бесплатно от 1 500 ₽" }
+          - { label: Минимальный заказ, name: minOrder, widget: string, required: false, hint: "Например: 800 ₽" }
+          - { label: Соцсети, name: social, widget: string, required: false, hint: "Например: Telegram: @magic_sushi" }
+
+  - name: menu
+    label: Меню
+    files:
+      - name: menu
+        label: Разделы, блюда, цены и фото
+        file: data/menu.json
+        fields:
+          - label: Разделы меню
+            name: categories
+            widget: list
+            label_singular: раздел
+            summary: "{{fields.title}}"
+            fields:
+              - { label: Название раздела, name: title, widget: string }
+              - { label: Подпись под названием, name: note, widget: string, required: false, hint: "Например: Порция 8 штук" }
+              - label: Код раздела
+                name: id
+                widget: string
+                hint: "Латиницей, без пробелов, например: rolls. Нужен для ссылок внутри страницы."
+                pattern: ['^[a-z0-9-]+$', "Только маленькие латинские буквы, цифры и дефис"]
+              - label: Блюда
+                name: items
+                widget: list
+                label_singular: блюдо
+                summary: "{{fields.name}}, {{fields.price}} ₽"
+                fields:
+                  - { label: Название, name: name, widget: string }
+                  - { label: Состав, name: desc, widget: string, required: false }
+                  - { label: Вес или объём, name: weight, widget: string, required: false, hint: "Например: 230 г" }
+                  - { label: Цена в рублях, name: price, widget: number, value_type: int, min: 0 }
+                  - { label: Фото, name: photo, widget: image, required: false, hint: "Горизонтальное фото, лучше до 2 МБ. Без фото показывается цветная заглушка." }
