@@ -145,6 +145,36 @@
     });
     document.getElementById("menu-root").innerHTML = html;
     document.getElementById("pills").innerHTML = pillHtml;
+    setupSearch();
+  }
+
+  function setupSearch() {
+    var input = document.getElementById("search");
+    var root = document.getElementById("menu-root");
+    if (!input) return;
+    var empty = document.createElement("p");
+    empty.className = "notice";
+    empty.hidden = true;
+    empty.textContent = "Ничего не нашли. Попробуйте другое слово.";
+    root.appendChild(empty);
+    input.addEventListener("input", function () {
+      var q = input.value.trim().toLowerCase().replace(/ё/g, "е");
+      var shown = 0;
+      root.querySelectorAll(".cat").forEach(function (sec) {
+        var any = 0;
+        sec.querySelectorAll(".card").forEach(function (c) {
+          var t = c.textContent.toLowerCase().replace(/ё/g, "е");
+          var ok = !q || t.indexOf(q) !== -1;
+          c.hidden = !ok;
+          if (ok) any++;
+        });
+        sec.hidden = !any;
+        shown += any;
+      });
+      empty.hidden = shown > 0;
+      var pills = document.getElementById("pills");
+      if (pills) pills.hidden = !!q;
+    });
   }
 
   function showError(err) {
